@@ -16,4 +16,4 @@ jobs:
             -f "ref=main" \
             -f "inputs[NEURODAMUS_MODELS_BRANCH]=${{ github.head_ref || github.ref_name }}"
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.TEST_TOKEN }}
