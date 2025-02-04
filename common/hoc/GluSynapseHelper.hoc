@@ -38,7 +38,7 @@ proc init() { local tgid, x, synapseID, baseSeed, res, spopid, tpopid  localobj 
     x = $3
     synapseID = $4
     baseSeed = $5
-    if (numarg()>=7) {
+    if (numarg()>=8) {
         spopid = $6 // placeholder
         tpopid = $7 // placeholder
     } else {
