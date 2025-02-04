@@ -29,9 +29,8 @@ public synapse
  * @param x location of the synapse along the section (0<=x<=1)
  * @param synapseID id assigned to this synapses within the cell's context
  * @param baseSeed for random number generator
- * @param parseConnection Map of field/value pairs of Connection block taken from ConfigParser
  */
-proc init() { local tgid, x, synapseID, baseSeed, res, spopid, tpopid  localobj synParams, parseConnection, fname, rngInfo
+proc init() { local tgid, x, synapseID, baseSeed, res, spopid, tpopid  localobj synParams, fname, rngInfo
     strdef datasetName
 
     tgid = $1
@@ -42,9 +41,7 @@ proc init() { local tgid, x, synapseID, baseSeed, res, spopid, tpopid  localobj 
     if (numarg()>=8) {
         spopid = $6 // placeholder
         tpopid = $7 // placeholder
-        parseConnection = $o8
     } else {
-        parseConnection = $o6
         spopid = 0 // placeholder
         tpopid = 1 // placeholder
     }
