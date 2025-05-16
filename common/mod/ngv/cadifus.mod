@@ -363,7 +363,12 @@ BREAKPOINT {
     
     :i=0
     caerAll=caer[0]
+
     is_glu2_assigned = 0
+: here we want to check glu2 assignment. checking _p_glu2 ends in 
+: RuntimeError: hocobj_call error: generic_data_handle{cont=GlutReceive 
+: glut row=0/129 type=double*}::literal_value<void*> cannot be called on 
+: a handle [that was] in modern mode
 VERBATIM
     if (_ppvar[0].get<double*>()) {
         is_glu2_assigned = 1;
