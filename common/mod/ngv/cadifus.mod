@@ -366,7 +366,6 @@ BREAKPOINT {
     is_glu2_assigned = 0
 VERBATIM
     if (_p_glu2) {
-        is_glu2_assigned = 1;
     }
 ENDVERBATIM
 
