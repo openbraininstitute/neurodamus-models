@@ -315,6 +315,7 @@ val1
     LL[Nannuli] (mM/ms) : 0.1e-6 mM/ms nominally, but adjusted so that
     : jchnl + jpump + jleak = 0  when  ca = 0.05 uM and h = Kinh/(ca + Kinh)
     glu2 :variable for synaptic stimulation
+    is_glu2_assigned :flag. 1 when glu2 is a valid pointer
 glu3
     icaER
     icaPLASMA
@@ -363,7 +364,7 @@ BREAKPOINT {
     :i=0
     caerAll=caer[0]
 
-    if (glu2>0){
+    if (is_glu2_assigned && glu2>0){
 :        ikState=1e-3
         ikState=1e1
 :	ki=150
