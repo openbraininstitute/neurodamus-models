@@ -363,6 +363,12 @@ BREAKPOINT {
     
     :i=0
     caerAll=caer[0]
+    is_glu2_assigned = 0
+VERBATIM
+    if (_p_glu2) {
+        is_glu2_assigned = 1;
+    }
+ENDVERBATIM
 
     if (is_glu2_assigned && glu2>0){
 :        ikState=1e-3
