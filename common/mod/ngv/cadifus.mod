@@ -365,7 +365,7 @@ BREAKPOINT {
     caerAll=caer[0]
     is_glu2_assigned = 0
 VERBATIM
-    if (_p_glu2) {
+    if (_ppvar[0].get<double*>()) {
     }
 ENDVERBATIM
 
