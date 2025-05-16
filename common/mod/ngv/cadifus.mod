@@ -366,6 +366,7 @@ BREAKPOINT {
     is_glu2_assigned = 0
 VERBATIM
     if (_ppvar[0].get<double*>()) {
+        is_glu2_assigned = 1;
     }
 ENDVERBATIM
 
