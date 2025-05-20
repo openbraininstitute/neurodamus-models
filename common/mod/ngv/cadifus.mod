@@ -77,7 +77,7 @@ ENDCOMMENT
 NEURON {
     THREADSAFE
     SUFFIX cadifus
-    BBCOREPOINTER glu2
+    POINTER glu2
 
 :    USEION ca READ cao, cai, ica WRITE cai, ica    
 :    USEION k READ ko, ki, ik WRITE ki, ik
