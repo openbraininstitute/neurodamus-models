@@ -368,7 +368,12 @@ BREAKPOINT {
 : here we want to check glu2 assignment. checking _p_glu2 ends in 
 : RuntimeError: hocobj_call error: generic_data_handle{cont=GlutReceive 
 : glut row=0/129 type=double*}::literal_value<void*> cannot be called on 
-: a handle [that was] in modern mode
+: a handle [that was] in modern mode.
+: I know, it is very confusing. All stems from the fact that checking
+: the pointer _p_glu2 is not allowed in modern hoc.
+: There is an issue open here: https://github.com/neuronsimulator/nrn/issues/2458
+: however the last update is more than 2 years old.
+: This is my best-effort workaround for now.
 VERBATIM
     if (_ppvar[0].get<double*>()) {
         is_glu2_assigned = 1;
