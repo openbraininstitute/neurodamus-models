@@ -315,7 +315,6 @@ val1
     LL[Nannuli] (mM/ms) : 0.1e-6 mM/ms nominally, but adjusted so that
     : jchnl + jpump + jleak = 0  when  ca = 0.05 uM and h = Kinh/(ca + Kinh)
     glu2 :variable for synaptic stimulation
-    is_glu2_assigned :flag. 1 when glu2 is a valid pointer
 glu3
     icaER
     icaPLASMA
@@ -356,6 +355,13 @@ ikState
     ERarea_per_um
 }
 
+FUNCTION is_glu2_assigned() {
+    VERBATIM
+        return &glu2 != nullptr;
+    ENDVERBATIM
+    return 0.0  // fallback; should never reach
+}
+
 BREAKPOINT {
     :    ica=0
     :ica=0
@@ -364,23 +370,17 @@ BREAKPOINT {
     :i=0
     caerAll=caer[0]
 
-    is_glu2_assigned = 0
-: here we want to check glu2 assignment. Checking _p_glu2 ends in 
-: RuntimeError: hocobj_call error: generic_data_handle{cont=GlutReceive 
-: glut row=0/129 type=double*}::literal_value<void*> cannot be called on 
-: a handle [that was] in modern mode.
+: here we want to check glu2 assignment. Checking _p_glu2 ends in:
+    : RuntimeError: hocobj_call error: generic_data_handle{cont=GlutReceive 
+    : glut row=0/129 type=double*}::literal_value<void*> cannot be called on 
+    : a handle [that was] in modern mode.
 : I know, it is very confusing. All stems from the fact that checking
 : the pointer _p_glu2 is not allowed in modern hoc.
 : There is an issue open here: https://github.com/neuronsimulator/nrn/issues/2458
 : however the last update is more than 2 years old.
 : This is my best-effort workaround for now.
-VERBATIM
-    if (&glu2) {
-        is_glu2_assigned = 1;
-    }
-ENDVERBATIM
 
-    if (is_glu2_assigned && glu2>0){
+    if (is_glu2_assigned() && glu2>0){
 :        ikState=1e-3
         ikState=1e1
 :	ki=150
