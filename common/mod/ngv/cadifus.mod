@@ -355,6 +355,10 @@ ikState
     ERarea_per_um
 }
 
+VERBATIM
+bool is_glu2_assigned(){ return &glu2 != nullptr;}
+ENDVERBATIM
+
 BREAKPOINT {
     :    ica=0
     :ica=0
@@ -373,9 +377,7 @@ BREAKPOINT {
 : however the last update is more than 2 years old.
 : This is my best-effort workaround for now.
 
-VERBATIM
-bool is_glu2_assigned(){ return &glu2 != nullptr;}
-ENDVERBATIM
+
 
     if (is_glu2_assigned() && glu2>0){
 :        ikState=1e-3
