@@ -357,9 +357,8 @@ ikState
 
 FUNCTION is_glu2_assigned() {
     VERBATIM
-        return &glu2 != nullptr;
+        _lis_glu2_assigned = (&glu2 != nullptr);
     ENDVERBATIM
-    return 0.0;  // fallback; should never reach
 }
 
 BREAKPOINT {
