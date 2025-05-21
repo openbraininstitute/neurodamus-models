@@ -355,12 +355,6 @@ ikState
     ERarea_per_um
 }
 
-FUNCTION is_glu2_assigned() {
-    VERBATIM
-        _lis_glu2_assigned = (&glu2 != nullptr);
-    ENDVERBATIM
-}
-
 BREAKPOINT {
     :    ica=0
     :ica=0
@@ -378,6 +372,10 @@ BREAKPOINT {
 : There is an issue open here: https://github.com/neuronsimulator/nrn/issues/2458
 : however the last update is more than 2 years old.
 : This is my best-effort workaround for now.
+
+VERBATIM
+bool is_glu2_assigned(){ return &glu2 != nullptr;}
+ENDVERBATIM
 
     if (is_glu2_assigned() && glu2>0){
 :        ikState=1e-3
