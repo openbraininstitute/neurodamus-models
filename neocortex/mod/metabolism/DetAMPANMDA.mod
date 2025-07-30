@@ -220,7 +220,7 @@ NET_RECEIVE (weight,weight_AMPA, weight_NMDA, R, Pr, u, tsyn (ms)){
 }
 
 
-FUNCTION toggleVerbose() {
+PROCEDURE toggleVerbose() {
     verboseLevel = 1-verboseLevel
 }
 

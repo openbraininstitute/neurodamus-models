@@ -165,6 +165,6 @@ NET_RECEIVE (weight,weight_GABAA, weight_GABAB, R, Pr, u, tsyn (ms)){
 }
 
 
-FUNCTION toggleVerbose() {
+PROCEDURE toggleVerbose() {
     verboseLevel = 1-verboseLevel
 }

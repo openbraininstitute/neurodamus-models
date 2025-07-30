@@ -592,7 +592,7 @@ VERBATIM
 ENDVERBATIM
 }
 
-FUNCTION toggleVerbose() {
+PROCEDURE toggleVerbose() {
     verboseLevel = 1 - verboseLevel
 }
 
