@@ -42,6 +42,8 @@ jobs:
             coreneuron: 'ON'
           - model: 'thalamus'
             coreneuron: 'ON'
+          - model: 'mousify'
+            coreneuron: 'ON'
           - model: 'Allen_V1'
             coreneuron: 'OFF'
 
