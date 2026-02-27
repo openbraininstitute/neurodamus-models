@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        model: ['hippocampus', 'neocortex', 'thalamus']
+        model: ['hippocampus', 'neocortex', 'thalamus', 'mousify']
         coreneuron: ['ON']
         metabolism: ['OFF']
         ngv: ['OFF']
@@ -38,12 +38,6 @@ jobs:
             ngv: 'OFF'
             plasticity: 'OFF'
             v5: 'ON'
-          - model: 'hippocampus'
-            coreneuron: 'ON'
-          - model: 'thalamus'
-            coreneuron: 'ON'
-          - model: 'mousify'
-            coreneuron: 'ON'
           - model: 'Allen_V1'
             coreneuron: 'OFF'
 
