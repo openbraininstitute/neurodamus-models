@@ -16,11 +16,5 @@ Common models
 
 These common models are linked from the common folder.
 
-The following files are required for synapse replay.
+The following file is required for synapse replay.
 - mod/vecevent.mod
-
-The following files are required for Neurodamus validation checks but are not functionally used by the V1 model.
-- mod/ProbAMPANMDA_EMS.mod
-- mod/ProbGABAAB_EMS.mod
-- hoc/AMPANMDAHelper.hoc
-- hoc/GABAABHelper.hoc
