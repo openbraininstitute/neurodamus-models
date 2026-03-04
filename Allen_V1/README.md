@@ -17,4 +17,4 @@ Common models
 These common models are linked from the common folder.
 
 - mod/vecevent.mod is required for synapse replay.
-- hoc/GABAABHelper.hoc is required to by randomize_Gaba_risetime in the simulation config file, but is not functionally used by the V1 model.
+- hoc/GABAABHelper.hoc and mod/ProbGABAAB_EMS.mod are required to by randomize_Gaba_risetime in the simulation config file, but is not functionally used by the V1 model.
