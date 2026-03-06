@@ -7,7 +7,7 @@
  */
 //Global that is shared/accessible from GABAABHelper
 strdef randomize_Gaba_risetime
-randomize_Gaba_risetime = "True"
+randomize_Gaba_risetime = "False"
 
 {load_file("RNGSettings.hoc")}
 

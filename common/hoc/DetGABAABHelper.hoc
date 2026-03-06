@@ -9,7 +9,7 @@
 
 if ( ! name_declared("randomize_Gaba_risetime") ) {
     execute("~strdef randomize_Gaba_risetime")  // otherwise (early-binding) always defines
-    execute("~randomize_Gaba_risetime=\"True\"")
+    execute("~randomize_Gaba_risetime=\"False\"")
 }
 
 /**
