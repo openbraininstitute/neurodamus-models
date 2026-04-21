@@ -18,6 +18,7 @@ option(NEURODAMUS_NCX_METABOLISM OFF)
 option(NEURODAMUS_NCX_NGV OFF)
 option(NEURODAMUS_NCX_PLASTICITY OFF)
 option(NEURODAMUS_NCX_V5 OFF)
+option(NEURODAMUS_ENABLE_REPORTING "enable reporting with libsonatareport" ON)
 
 # NEURON does not install any CMake glue, we have to manually find nrnivmodl
 find_program(nrnivmodl nrnivmodl REQUIRED)
@@ -136,22 +137,29 @@ foreach(_input_dir IN LISTS input_mod_directories)
   endforeach()
 endforeach()
 
-# At some point in the 1.14 series, HDF5 decided that the HDF5_*LIBRARIES
-# variables should contain _targets_, not library names/paths.
-set(HDF5_NO_FIND_PACKAGE_CONFIG_FILE ON)
-find_package(HDF5 REQUIRED)
-find_package(sonata REQUIRED)
+if(NEURODAMUS_ENABLE_REPORTING)
+  message(STATUS "Enable reporting with libsonatareport")
+  # At some point in the 1.14 series, HDF5 decided that the HDF5_*LIBRARIES
+  # variables should contain _targets_, not library names/paths.
+  set(HDF5_NO_FIND_PACKAGE_CONFIG_FILE ON)
+  find_package(HDF5 REQUIRED)
+  find_package(sonata REQUIRED)
 
-set(nrn_incflags "-isystem ${sonatareport_INCLUDE_DIR}")
-get_filename_component(_report_dir "${sonatareport_LIBRARY}" DIRECTORY)
-set(nrn_loadflags "-Wl,-rpath,'${_report_dir}' '${sonatareport_LIBRARY}'")
-foreach(dir IN LISTS HDF5_INCLUDE_DIRS)
-  set(nrn_incflags "${nrn_incflags} -isystem '${dir}'")
-endforeach()
-foreach(lib IN LISTS HDF5_C_LIBRARIES)
-  get_filename_component(_lib_dir "${lib}" DIRECTORY)
-  set(nrn_loadflags "${nrn_loadflags} -Wl,-rpath,'${_lib_dir}' '${lib}'")
-endforeach()
+  set(nrn_incflags "-isystem ${sonatareport_INCLUDE_DIR}")
+  get_filename_component(_report_dir "${sonatareport_LIBRARY}" DIRECTORY)
+  set(nrn_loadflags "-Wl,-rpath,'${_report_dir}' '${sonatareport_LIBRARY}'")
+  foreach(dir IN LISTS HDF5_INCLUDE_DIRS)
+    set(nrn_incflags "${nrn_incflags} -isystem '${dir}'")
+  endforeach()
+  foreach(lib IN LISTS HDF5_C_LIBRARIES)
+    get_filename_component(_lib_dir "${lib}" DIRECTORY)
+    set(nrn_loadflags "${nrn_loadflags} -Wl,-rpath,'${_lib_dir}' '${lib}'")
+  endforeach()
+else()
+  message(STATUS "Disable reporting")
+  set(nrn_incflags "${nrn_incflags} -DDISABLE_REPORTINGLIB")
+  set(nrn_loadflags "")
+endif()
 
 configure_file(build_neurodamus.sh.in build_neurodamus.sh @ONLY)
 
