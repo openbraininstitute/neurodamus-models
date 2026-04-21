@@ -6,7 +6,7 @@ on:
   pull_request:
 
 env:
-  SONATA_REPORT_VERSION: '1.2.3'
+  SONATA_REPORT_VERSION: '2.0.0'
 
 jobs:
   build:
@@ -65,6 +65,7 @@ jobs:
         python -m pip install NEURON-nightly neurodamus
 
     - name: Cache SONATA™ reporting library build
+      if: matrix.enable_reporting != 'OFF'
       id: cache-libsonatareport
       uses: actions/cache@v3
       env:
@@ -74,9 +75,9 @@ jobs:
         key: build-reports-${{ env.SONATA_REPORT_VERSION}}
 
     - name: Install SONATA™ reporting library
-      if: steps.cache-libsonatareport.outputs.cache-hit != 'true'
+      if: matrix.enable_reporting != 'OFF' && steps.cache-libsonatareport.outputs.cache-hit != 'true'
       run: |
-        gh repo clone BlueBrain/libsonatareport $HOME/reports/src -- --recursive --shallow-submodules --branch ${{ env.SONATA_REPORT_VERSION }}
+        gh repo clone openbraininstitute/libsonatareport $HOME/reports/src -- --recursive --shallow-submodules --branch ${{ env.SONATA_REPORT_VERSION }}
         cmake \
           -B $HOME/reports/build \
           -S $HOME/reports/src \
@@ -107,7 +108,7 @@ jobs:
           -DNEURODAMUS_NCX_METABOLISM=${{ matrix.metabolism || 'OFF' }} \
           -DNEURODAMUS_NCX_NGV=${{ matrix.ngv || 'OFF' }} \
           -DNEURODAMUS_NCX_PLASTICITY=${{ matrix.plasticity || 'OFF' }} \
-          -DNEURODAMUS_NCX_V5=${{ matrix.v5 || 'OFF'}}
+          -DNEURODAMUS_NCX_V5=${{ matrix.v5 || 'OFF'}} \
           -DNEURODAMUS_ENABLE_REPORTING=${{ matrix.enable_reporting || 'ON' }}
 
     - name: Build and install models
