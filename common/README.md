@@ -11,4 +11,5 @@ Versions
 --------
 
 2019.1 - First import after splitting of neurodamus and models
-
+2026.6 - Reorganization, keep the common mod files shared between Neurodamus and BlueCellulab
+         Move synapse HOC helper files to Neurodamus/data/hoc
