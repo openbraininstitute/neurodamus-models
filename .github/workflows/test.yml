@@ -31,4 +31,4 @@ jobs:
 
     - name: Quick test to load models
       run: |
-        ./${{ github.workspace }}/x86_64/special -python -c "from neuron import h; h.quit()"
+        ./x86_64/special -python -c "from neuron import h; h.quit()"
