@@ -8,16 +8,7 @@ set(NEURODAMUS_CORE_DIR
 set(NEURODAMUS_ENABLE_CORENEURON
     ON
     CACHE BOOL "Enable CoreNEURON")
-set(NEURODAMUS_MECHANISMS
-    ""
-    CACHE STRING "Which model's mechanisms to use")
-set_property(CACHE NEURODAMUS_MECHANISMS PROPERTY STRINGS hippocampus neocortex
-                                                  thalamus)
 
-option(NEURODAMUS_NCX_METABOLISM OFF)
-option(NEURODAMUS_NCX_NGV OFF)
-option(NEURODAMUS_NCX_PLASTICITY OFF)
-option(NEURODAMUS_NCX_V5 OFF)
 option(NEURODAMUS_ENABLE_REPORTING "enable reporting with libsonatareport" ON)
 
 # NEURON does not install any CMake glue, we have to manually find nrnivmodl
@@ -63,29 +54,7 @@ endforeach()
 # Mod directories in order of importance, files in later mod directories ignored
 # if the same basename is present in an earlier directory
 set(input_mod_directories "${NEURODAMUS_CORE_DIR}/mod")
-if("${NEURODAMUS_MECHANISMS}" STREQUAL "neocortex")
-  if(NEURODAMUS_NCX_METABOLISM)
-    list(APPEND input_mod_directories
-         "${CMAKE_CURRENT_LIST_DIR}/${NEURODAMUS_MECHANISMS}/mod/metabolism")
-  endif()
-  if(NEURODAMUS_NCX_NGV)
-    list(APPEND input_mod_directories
-         "${CMAKE_CURRENT_LIST_DIR}/common/mod/ngv")
-  endif()
-  if(NEURODAMUS_NCX_PLASTICITY)
-    list(APPEND input_mod_directories
-         "${CMAKE_CURRENT_LIST_DIR}/${NEURODAMUS_MECHANISMS}/mod/v6/optimized")
-  endif()
-  list(APPEND input_mod_directories
-       "${CMAKE_CURRENT_LIST_DIR}/${NEURODAMUS_MECHANISMS}/mod/v6")
-  if(NEURODAMUS_NCX_V5)
-    list(APPEND input_mod_directories
-         "${CMAKE_CURRENT_LIST_DIR}/${NEURODAMUS_MECHANISMS}/mod/v5")
-  endif()
-else()
-  list(APPEND input_mod_directories
-       "${CMAKE_CURRENT_LIST_DIR}/${NEURODAMUS_MECHANISMS}/mod")
-endif()
+list(APPEND input_mod_directories "${NEURODAMUS_CORE_DIR}/mod")
 
 set(_input_mod_filestubs)
 set(_build_mod_dir mod)

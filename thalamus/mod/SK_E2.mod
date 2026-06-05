@@ -1,1 +1,0 @@
-../../neocortex/mod/common/SK_E2.mod
