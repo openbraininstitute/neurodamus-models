@@ -24,8 +24,8 @@ jobs:
 
     - name: Build and install models
       run: |
-        nrnivmodl -coreneuron ${{ github.workspace }}/common/mod
+        nrnivmodl -coreneuron ${{ github.workspace }}/mod
 
-    - name: Quick test to load models
+    - name: Check that all mechanisms are available in Neuron
       run: |
         ./x86_64/special -python -c "from neuron import h; assert all(hasattr(h, attr) for attr in ['ConductanceSource', 'MembraneCurrentSource', 'InhPoissonStim', 'TTXDynamicsSwitch', 'VecStim']); h.quit()"
