@@ -1,6 +1,6 @@
 COMMENT
 /**
- * @file netstim_inhpoisson.mod
+ * @file InhPoissonStim.mod
  * @brief Inhibitory poisson generator by the thinning method.
  * @author Eilif Muller
  * @date 2011-03-16
