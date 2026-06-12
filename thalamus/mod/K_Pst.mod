@@ -1,1 +1,0 @@
-../../neocortex/mod/common/K_Pst.mod

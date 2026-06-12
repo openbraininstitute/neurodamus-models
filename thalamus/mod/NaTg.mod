@@ -1,1 +1,0 @@
-../../neocortex/mod/v6/NaTg.mod
