@@ -1,6 +1,6 @@
 # neurodamus-models
 
-This repository provides the technical mechansim files shared by the Open Brain Institute (OBI) simulators, [Neurodamus](https://github.com/openbraininstitute/neurodamus) and [BlueCelluLab](https://github.com/openbraininstitute/BlueCelluLab/). Scientific models are required to be provided with circuit data. Together, the scientific models and the mechanism files provided by both this repository and an OBI simulator (Neurodamus or BlueCelluLab) enable in silico simulations through the NEURON simulator.
+This repository contains the technical mechanism files shared by the Open Brain Institute (OBI) simulators, [Neurodamus](https://github.com/openbraininstitute/neurodamus) and [BlueCelluLab](https://github.com/openbraininstitute/BlueCelluLab/). Scientific models are required to be supplied with circuit data. Together, the scientific models and the mechanism files provided by both this repository and an OBI simulator (Neurodamus or BlueCelluLab) enable in silico simulations through the NEURON simulator. The [SONATA specifications](https://sonata-extension.readthedocs.io/en/latest/mod_files.html) provide more details about supported mechanisms.
 
 For the last release where all simulation models (neocortex, hippocampus, thalamus, and mousify) were bundled in a single repository, please refer to release 2.4.4.
 
